@@ -75,11 +75,22 @@ pyspark \
 --jars ${wd}/geomesa/target/geoMesa-1.0.jar,/opt/cloudera/parcels/CDH-6.2.0-1.cdh6.2.0.p0.967373/jars/httpclient-4.5.3.jar,/opt/cloudera/parcels/CDH-6.2.0-1.cdh6.2.0.p0.967373/jars/commons-httpclient-3.1.jar
 EOF
 
+cd /home/dsmillerrunfol@campus.wm.edu/geoMesa_gB_Import/geomesa-hbase_2.11-3.1.0
 
-cd /home/dsmillerrunfol@campus.wm.edu/geoMesa_gB_Import/geomesa-hbase_2.11-3.1.0/
-touch ./conf/reference.conf
-cat << EOF >> ./conf/reference.conf
-include "sfts/geoquery/geoboundaries.conf"
-EOF
+cp /etc/hbase/conf/hbase-site.xml conf/
+
+sed -i 's|</configuration>|<property><name>hbase.geomesa.principal</name><value>dsmillerrunfol@CAMPUS.WM.EDU</value></property><property><name>hbase.geomesa.keytab</name><value>~/.kerberos/dsmillerrunfol.keytab</value></property></configuration>|g' ./conf/hbase-site.xml
+
+export HADOOP_HOME=/opt/cloudera/parcels/CDH/lib/hadoop
+export HADOOP_CONF_DIR=/etc/hadoop/conf
+export HADOOP_HDFS_HOME=/opt/cloudera/parcels/CDH/lib/hadoop-hdfs
+export YARN_HOME=/opt/cloudera/parcels/CDH/lib/hadoop-yarn
+export HADOOP_MAPRED_HOME=/opt/cloudera/parcels/CDH/lib/hadoop-mapreduce
+export HBASE_HOME=/opt/cloudera/parcels/CDH/lib/hbase
+export HBASE_CONF_DIR=/etc/hbase/conf
+export GEOMESA_HBASE_HOME=/home/dsmillerrunfol@campus.wm.edu/geoMesa_gB_Import/geomesa-hbase_2.11-3.1.0
+
+./geomesa-hbase_2.11-3.1.0/bin/geomesa-hbase create-schema --catalog gb.adm --spec geoboundaries  --feature-name adm
+
 
 #pip3 install geomesa_pyspark-3.1.0.tar.gz

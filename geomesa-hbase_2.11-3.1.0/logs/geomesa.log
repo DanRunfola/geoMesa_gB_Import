@@ -1,0 +1,468 @@
+2020-12-10 20:42:46,704 INFO  [org.locationtech.geomesa.tools.user] Usage: geomesa-hbase [command] [command options]
+  Commands:
+    bulk-ingest          Convert various file formats into HBase HFiles suitable for incremental load
+    bulk-load            Bulk load HFiles into HBase
+    classpath            Display the GeoMesa classpath
+    configure            Configure the local environment for GeoMesa
+    convert              Convert files using GeoMesa's internal converter framework
+    create-schema        Create a GeoMesa feature type
+    delete-catalog       Delete a GeoMesa catalog completely (and all features in it)
+    delete-features      Delete features from a GeoMesa schema
+    describe-schema      Describe the attributes of a given GeoMesa feature type
+    env                  Examine the current GeoMesa environment
+    explain              Explain how a GeoMesa query will be executed
+    export               Export features from a GeoMesa data store
+    gen-avro-schema      Generate an Avro schema from a SimpleFeatureType
+    get-sft-config       Get the SimpleFeatureType definition of a schema
+    get-type-names       List the feature types for a given catalog
+    help                 Show help
+    ingest               Ingest/convert various file formats into GeoMesa
+    manage-partitions    Manage partitioned schemas
+    playback             Playback features from a GeoMesa data store, based on the feature date
+    remove-schema        Remove a schema and all associated features
+    scala-console        Run a Scala REPL with the GeoMesa classpath and configuration loaded.
+    stats-analyze        Analyze statistics on a GeoMesa feature type
+    stats-bounds         View or calculate bounds on attributes in a GeoMesa feature type
+    stats-count          Estimate or calculate feature counts in a GeoMesa feature type
+    stats-histogram      View or calculate counts of attribute in a GeoMesa feature type, grouped by sorted values
+    stats-top-k          Enumerate the most frequent values in a GeoMesa feature type
+    update-schema        Update a GeoMesa feature type
+    version              Display the GeoMesa version installed locally
+    version-remote       Display the GeoMesa version installed on a cluster
+
+2020-12-10 20:42:52,899 INFO  [org.locationtech.geomesa.tools.output] No flags given; displaying list of SFTs and Converters.
+2020-12-10 20:42:52,902 INFO  [org.locationtech.geomesa.tools.output] Use 'help env' to see complete command options.
+2020-12-10 20:42:52,902 INFO  [org.locationtech.geomesa.tools.output] Simple Feature Types:
+2020-12-10 20:42:54,154 INFO  [org.locationtech.geomesa.tools.output] adsbx
+2020-12-10 20:42:54,154 INFO  [org.locationtech.geomesa.tools.output] example-avro
+2020-12-10 20:42:54,154 INFO  [org.locationtech.geomesa.tools.output] example-csv
+2020-12-10 20:42:54,154 INFO  [org.locationtech.geomesa.tools.output] example-csv-complex
+2020-12-10 20:42:54,154 INFO  [org.locationtech.geomesa.tools.output] example-csv-full-table-scan-guard
+2020-12-10 20:42:54,154 INFO  [org.locationtech.geomesa.tools.output] example-csv-graduated-guard
+2020-12-10 20:42:54,154 INFO  [org.locationtech.geomesa.tools.output] example-csv-multivis
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] example-csv-temporal-guard
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] example-json
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] example-lines
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] example-polygons
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] example-xml
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] gdelt
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] gdelt2
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] geoboundaries
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] geolife
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] geonames
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] gtd
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] marinecadastre-ais
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] marinecadastre-ais-csv
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] nyctaxi
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] nyctaxi-single
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] osm-gpx
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] osm-nodes
+2020-12-10 20:42:54,155 INFO  [org.locationtech.geomesa.tools.output] osm-ways
+2020-12-10 20:42:54,156 INFO  [org.locationtech.geomesa.tools.output] tdrive
+2020-12-10 20:42:54,156 INFO  [org.locationtech.geomesa.tools.output] twitter
+2020-12-10 20:42:54,156 INFO  [org.locationtech.geomesa.tools.output] twitter-polygon
+2020-12-10 20:42:54,156 INFO  [org.locationtech.geomesa.tools.output] Simple Feature Type Converters:
+2020-12-10 20:42:54,168 INFO  [org.locationtech.geomesa.tools.output] adsbx-base
+2020-12-10 20:42:54,168 INFO  [org.locationtech.geomesa.tools.output] adsbx-historical
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] adsbx-live
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] example-avro-header
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] example-avro-no-header
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] example-csv
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] example-csv-complex
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] example-csv-per-attr-visibilities
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] example-csv-with-visibilities
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] example-json
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] example-lines
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] example-polygons
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] example-xml
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] example-xml-multi
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] gdelt
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] gdelt2
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] geoboundaries-converter
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] geolife
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] geonames
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] gtd
+2020-12-10 20:42:54,169 INFO  [org.locationtech.geomesa.tools.output] marinecadastre-ais
+2020-12-10 20:42:54,170 INFO  [org.locationtech.geomesa.tools.output] marinecadastre-ais-csv
+2020-12-10 20:42:54,170 INFO  [org.locationtech.geomesa.tools.output] nyctaxi
+2020-12-10 20:42:54,170 INFO  [org.locationtech.geomesa.tools.output] nyctaxi-drop
+2020-12-10 20:42:54,170 INFO  [org.locationtech.geomesa.tools.output] nyctaxi-single
+2020-12-10 20:42:54,170 INFO  [org.locationtech.geomesa.tools.output] osm-gpx
+2020-12-10 20:42:54,170 INFO  [org.locationtech.geomesa.tools.output] osm-nodes
+2020-12-10 20:42:54,170 INFO  [org.locationtech.geomesa.tools.output] osm-ways
+2020-12-10 20:42:54,170 INFO  [org.locationtech.geomesa.tools.output] tdrive
+2020-12-10 20:42:54,170 INFO  [org.locationtech.geomesa.tools.output] twitter
+2020-12-10 20:42:54,170 INFO  [org.locationtech.geomesa.tools.output] twitter-place-centroid
+2020-12-10 20:42:54,170 INFO  [org.locationtech.geomesa.tools.output] twitter-polygon
+2020-12-10 20:44:38,711 ERROR [org.locationtech.geomesa.hbase.tools.HBaseRunner$] Warning: Missing dependency for command execution: org/apache/hadoop/hbase/client/Connection
+java.lang.NoClassDefFoundError: org/apache/hadoop/hbase/client/Connection
+	at org.locationtech.geomesa.hbase.data.HBaseDataStoreParams$.<init>(HBaseDataStoreParams.scala:30)
+	at org.locationtech.geomesa.hbase.data.HBaseDataStoreParams$.<clinit>(HBaseDataStoreParams.scala)
+	at org.locationtech.geomesa.hbase.data.HBaseConnectionPool$.getConfiguration(HBaseConnectionPool.scala:85)
+	at org.locationtech.geomesa.hbase.tools.HBaseDataStoreCommand$class.connection(HBaseDataStoreCommand.scala:32)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.connection(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.DataStoreCommand$class.loadDataStore(Command.scala:67)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.loadDataStore(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.DataStoreCommand$class.withDataStore(Command.scala:61)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.withDataStore(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.data.CreateSchemaCommand$class.execute(CreateSchemaCommand.scala:30)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.execute(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.Runner$class.main(Runner.scala:30)
+	at org.locationtech.geomesa.hbase.tools.HBaseRunner$.main(HBaseRunner.scala:17)
+	at org.locationtech.geomesa.hbase.tools.HBaseRunner.main(HBaseRunner.scala)
+Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.hbase.client.Connection
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 14 more
+2020-12-10 20:44:38,714 ERROR [org.locationtech.geomesa.tools.user] Warning: Missing dependency for command execution: org/apache/hadoop/hbase/client/Connection
+2020-12-10 20:44:38,717 ERROR [org.locationtech.geomesa.tools.user] Warning: you have not set HBASE_HOME and/or HADOOP_HOME as environment variables.
+GeoMesa tools will not run without the appropriate HBase and Hadoop jars in the tools classpath.
+Please ensure that those jars are present in the classpath by running 'geomesa-hbase classpath'.
+To take corrective action, please place the necessary jar files in the lib directory of geomesa-tools.
+2020-12-10 20:45:43,836 ERROR [org.locationtech.geomesa.hbase.tools.HBaseRunner$] Warning: Missing dependency for command execution: org/apache/hadoop/hbase/client/Connection
+java.lang.NoClassDefFoundError: org/apache/hadoop/hbase/client/Connection
+	at org.locationtech.geomesa.hbase.data.HBaseDataStoreParams$.<init>(HBaseDataStoreParams.scala:30)
+	at org.locationtech.geomesa.hbase.data.HBaseDataStoreParams$.<clinit>(HBaseDataStoreParams.scala)
+	at org.locationtech.geomesa.hbase.data.HBaseConnectionPool$.getConfiguration(HBaseConnectionPool.scala:85)
+	at org.locationtech.geomesa.hbase.tools.HBaseDataStoreCommand$class.connection(HBaseDataStoreCommand.scala:32)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.connection(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.DataStoreCommand$class.loadDataStore(Command.scala:67)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.loadDataStore(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.DataStoreCommand$class.withDataStore(Command.scala:61)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.withDataStore(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.data.CreateSchemaCommand$class.execute(CreateSchemaCommand.scala:30)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.execute(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.Runner$class.main(Runner.scala:30)
+	at org.locationtech.geomesa.hbase.tools.HBaseRunner$.main(HBaseRunner.scala:17)
+	at org.locationtech.geomesa.hbase.tools.HBaseRunner.main(HBaseRunner.scala)
+Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.hbase.client.Connection
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 14 more
+2020-12-10 20:45:43,838 ERROR [org.locationtech.geomesa.tools.user] Warning: Missing dependency for command execution: org/apache/hadoop/hbase/client/Connection
+2020-12-10 20:45:43,841 ERROR [org.locationtech.geomesa.tools.user] Warning: you have not set HBASE_HOME and/or HADOOP_HOME as environment variables.
+GeoMesa tools will not run without the appropriate HBase and Hadoop jars in the tools classpath.
+Please ensure that those jars are present in the classpath by running 'geomesa-hbase classpath'.
+To take corrective action, please place the necessary jar files in the lib directory of geomesa-tools.
+2020-12-10 20:46:14,810 ERROR [org.locationtech.geomesa.hbase.tools.HBaseRunner$] Warning: Missing dependency for command execution: org/apache/hadoop/hbase/client/Connection
+java.lang.NoClassDefFoundError: org/apache/hadoop/hbase/client/Connection
+	at org.locationtech.geomesa.hbase.data.HBaseDataStoreParams$.<init>(HBaseDataStoreParams.scala:30)
+	at org.locationtech.geomesa.hbase.data.HBaseDataStoreParams$.<clinit>(HBaseDataStoreParams.scala)
+	at org.locationtech.geomesa.hbase.data.HBaseConnectionPool$.getConfiguration(HBaseConnectionPool.scala:85)
+	at org.locationtech.geomesa.hbase.tools.HBaseDataStoreCommand$class.connection(HBaseDataStoreCommand.scala:32)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.connection(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.DataStoreCommand$class.loadDataStore(Command.scala:67)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.loadDataStore(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.DataStoreCommand$class.withDataStore(Command.scala:61)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.withDataStore(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.data.CreateSchemaCommand$class.execute(CreateSchemaCommand.scala:30)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.execute(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.Runner$class.main(Runner.scala:30)
+	at org.locationtech.geomesa.hbase.tools.HBaseRunner$.main(HBaseRunner.scala:17)
+	at org.locationtech.geomesa.hbase.tools.HBaseRunner.main(HBaseRunner.scala)
+Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.hbase.client.Connection
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 14 more
+2020-12-10 20:46:14,813 ERROR [org.locationtech.geomesa.tools.user] Warning: Missing dependency for command execution: org/apache/hadoop/hbase/client/Connection
+2020-12-10 20:46:14,816 ERROR [org.locationtech.geomesa.tools.user] Warning: you have not set HBASE_HOME and/or HADOOP_HOME as environment variables.
+GeoMesa tools will not run without the appropriate HBase and Hadoop jars in the tools classpath.
+Please ensure that those jars are present in the classpath by running 'geomesa-hbase classpath'.
+To take corrective action, please place the necessary jar files in the lib directory of geomesa-tools.
+2020-12-10 20:47:13,362 INFO  [org.locationtech.geomesa.tools.output] No flags given; displaying list of SFTs and Converters.
+2020-12-10 20:47:13,365 INFO  [org.locationtech.geomesa.tools.output] Use 'help env' to see complete command options.
+2020-12-10 20:47:13,366 INFO  [org.locationtech.geomesa.tools.output] Simple Feature Types:
+2020-12-10 20:47:14,475 INFO  [org.locationtech.geomesa.tools.output] adsbx
+2020-12-10 20:47:14,475 INFO  [org.locationtech.geomesa.tools.output] example-avro
+2020-12-10 20:47:14,475 INFO  [org.locationtech.geomesa.tools.output] example-csv
+2020-12-10 20:47:14,475 INFO  [org.locationtech.geomesa.tools.output] example-csv-complex
+2020-12-10 20:47:14,475 INFO  [org.locationtech.geomesa.tools.output] example-csv-full-table-scan-guard
+2020-12-10 20:47:14,475 INFO  [org.locationtech.geomesa.tools.output] example-csv-graduated-guard
+2020-12-10 20:47:14,475 INFO  [org.locationtech.geomesa.tools.output] example-csv-multivis
+2020-12-10 20:47:14,475 INFO  [org.locationtech.geomesa.tools.output] example-csv-temporal-guard
+2020-12-10 20:47:14,475 INFO  [org.locationtech.geomesa.tools.output] example-json
+2020-12-10 20:47:14,475 INFO  [org.locationtech.geomesa.tools.output] example-lines
+2020-12-10 20:47:14,475 INFO  [org.locationtech.geomesa.tools.output] example-polygons
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] example-xml
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] gdelt
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] gdelt2
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] geoboundaries
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] geolife
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] geonames
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] gtd
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] marinecadastre-ais
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] marinecadastre-ais-csv
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] nyctaxi
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] nyctaxi-single
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] osm-gpx
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] osm-nodes
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] osm-ways
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] tdrive
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] twitter
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] twitter-polygon
+2020-12-10 20:47:14,476 INFO  [org.locationtech.geomesa.tools.output] Simple Feature Type Converters:
+2020-12-10 20:47:14,487 INFO  [org.locationtech.geomesa.tools.output] adsbx-base
+2020-12-10 20:47:14,487 INFO  [org.locationtech.geomesa.tools.output] adsbx-historical
+2020-12-10 20:47:14,487 INFO  [org.locationtech.geomesa.tools.output] adsbx-live
+2020-12-10 20:47:14,487 INFO  [org.locationtech.geomesa.tools.output] example-avro-header
+2020-12-10 20:47:14,487 INFO  [org.locationtech.geomesa.tools.output] example-avro-no-header
+2020-12-10 20:47:14,487 INFO  [org.locationtech.geomesa.tools.output] example-csv
+2020-12-10 20:47:14,487 INFO  [org.locationtech.geomesa.tools.output] example-csv-complex
+2020-12-10 20:47:14,487 INFO  [org.locationtech.geomesa.tools.output] example-csv-per-attr-visibilities
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] example-csv-with-visibilities
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] example-json
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] example-lines
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] example-polygons
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] example-xml
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] example-xml-multi
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] gdelt
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] gdelt2
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] geoboundaries-converter
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] geolife
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] geonames
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] gtd
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] marinecadastre-ais
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] marinecadastre-ais-csv
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] nyctaxi
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] nyctaxi-drop
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] nyctaxi-single
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] osm-gpx
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] osm-nodes
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] osm-ways
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] tdrive
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] twitter
+2020-12-10 20:47:14,488 INFO  [org.locationtech.geomesa.tools.output] twitter-place-centroid
+2020-12-10 20:47:14,489 INFO  [org.locationtech.geomesa.tools.output] twitter-polygon
+2020-12-10 20:47:30,479 ERROR [org.locationtech.geomesa.tools.user] Error parsing arguments: Was passed main parameter 'feature-name' but no main parameter was defined
+2020-12-10 20:47:30,481 INFO  [org.locationtech.geomesa.tools.user] Usage: create-schema [options]
+  Options:
+    --authorizations
+       Authorizations used for querying, comma-delimited
+  * -c, --catalog
+       Catalog table for GeoMesa datastore
+    --compression
+       Enable compression for a feature.  One of "snappy", "lzo", "gz", "bzip2",
+       "lz4", "zstd"
+    --dtg
+       DateTime field name to use as the default dtg
+    -f, --feature-name
+       Simple Feature Type name on which to operate
+    --no-remote-filters
+       Disable remote filtering and coprocessors
+       Default: false
+    --secure
+       Enable HBase security (visibilities)
+       Default: false
+  * -s, --spec
+       SimpleFeatureType specification as a GeoTools spec string, SFT config, or
+       file with either
+    -z, --zookeepers
+       Zookeepers (host[:port], comma separated)
+
+2020-12-10 20:47:30,481 ERROR [org.locationtech.geomesa.tools.user] Was passed main parameter 'feature-name' but no main parameter was defined
+2020-12-10 20:48:12,015 ERROR [org.locationtech.geomesa.hbase.tools.HBaseRunner$] Warning: Missing dependency for command execution: org/apache/hadoop/hbase/client/Connection
+java.lang.NoClassDefFoundError: org/apache/hadoop/hbase/client/Connection
+	at org.locationtech.geomesa.hbase.data.HBaseDataStoreParams$.<init>(HBaseDataStoreParams.scala:30)
+	at org.locationtech.geomesa.hbase.data.HBaseDataStoreParams$.<clinit>(HBaseDataStoreParams.scala)
+	at org.locationtech.geomesa.hbase.data.HBaseConnectionPool$.getConfiguration(HBaseConnectionPool.scala:85)
+	at org.locationtech.geomesa.hbase.tools.HBaseDataStoreCommand$class.connection(HBaseDataStoreCommand.scala:32)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.connection(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.DataStoreCommand$class.loadDataStore(Command.scala:67)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.loadDataStore(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.DataStoreCommand$class.withDataStore(Command.scala:61)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.withDataStore(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.data.CreateSchemaCommand$class.execute(CreateSchemaCommand.scala:30)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.execute(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.Runner$class.main(Runner.scala:30)
+	at org.locationtech.geomesa.hbase.tools.HBaseRunner$.main(HBaseRunner.scala:17)
+	at org.locationtech.geomesa.hbase.tools.HBaseRunner.main(HBaseRunner.scala)
+Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.hbase.client.Connection
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 14 more
+2020-12-10 20:48:12,018 ERROR [org.locationtech.geomesa.tools.user] Warning: Missing dependency for command execution: org/apache/hadoop/hbase/client/Connection
+2020-12-10 20:48:12,021 ERROR [org.locationtech.geomesa.tools.user] Warning: you have not set HBASE_HOME and/or HADOOP_HOME as environment variables.
+GeoMesa tools will not run without the appropriate HBase and Hadoop jars in the tools classpath.
+Please ensure that those jars are present in the classpath by running 'geomesa-hbase classpath'.
+To take corrective action, please place the necessary jar files in the lib directory of geomesa-tools.
+2020-12-10 20:57:17,135 ERROR [org.locationtech.geomesa.hbase.tools.HBaseRunner$] Warning: Missing dependency for command execution: org/apache/hadoop/hbase/client/Connection
+java.lang.NoClassDefFoundError: org/apache/hadoop/hbase/client/Connection
+	at org.locationtech.geomesa.hbase.data.HBaseDataStoreParams$.<init>(HBaseDataStoreParams.scala:30)
+	at org.locationtech.geomesa.hbase.data.HBaseDataStoreParams$.<clinit>(HBaseDataStoreParams.scala)
+	at org.locationtech.geomesa.hbase.data.HBaseConnectionPool$.getConfiguration(HBaseConnectionPool.scala:85)
+	at org.locationtech.geomesa.hbase.tools.HBaseDataStoreCommand$class.connection(HBaseDataStoreCommand.scala:32)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.connection(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.DataStoreCommand$class.loadDataStore(Command.scala:67)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.loadDataStore(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.DataStoreCommand$class.withDataStore(Command.scala:61)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.withDataStore(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.data.CreateSchemaCommand$class.execute(CreateSchemaCommand.scala:30)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.execute(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.Runner$class.main(Runner.scala:30)
+	at org.locationtech.geomesa.hbase.tools.HBaseRunner$.main(HBaseRunner.scala:17)
+	at org.locationtech.geomesa.hbase.tools.HBaseRunner.main(HBaseRunner.scala)
+Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.hbase.client.Connection
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 14 more
+2020-12-10 20:57:17,138 ERROR [org.locationtech.geomesa.tools.user] Warning: Missing dependency for command execution: org/apache/hadoop/hbase/client/Connection
+2020-12-10 20:57:17,142 ERROR [org.locationtech.geomesa.tools.user] Warning: you have not set HBASE_HOME and/or HADOOP_HOME as environment variables.
+GeoMesa tools will not run without the appropriate HBase and Hadoop jars in the tools classpath.
+Please ensure that those jars are present in the classpath by running 'geomesa-hbase classpath'.
+To take corrective action, please place the necessary jar files in the lib directory of geomesa-tools.
+2020-12-10 20:58:59,265 ERROR [org.locationtech.geomesa.hbase.tools.HBaseRunner$] Warning: Missing dependency for command execution: org/apache/hadoop/hbase/client/Connection
+java.lang.NoClassDefFoundError: org/apache/hadoop/hbase/client/Connection
+	at org.locationtech.geomesa.hbase.data.HBaseDataStoreParams$.<init>(HBaseDataStoreParams.scala:30)
+	at org.locationtech.geomesa.hbase.data.HBaseDataStoreParams$.<clinit>(HBaseDataStoreParams.scala)
+	at org.locationtech.geomesa.hbase.data.HBaseConnectionPool$.getConfiguration(HBaseConnectionPool.scala:85)
+	at org.locationtech.geomesa.hbase.tools.HBaseDataStoreCommand$class.connection(HBaseDataStoreCommand.scala:32)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.connection(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.DataStoreCommand$class.loadDataStore(Command.scala:67)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.loadDataStore(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.DataStoreCommand$class.withDataStore(Command.scala:61)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.withDataStore(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.data.CreateSchemaCommand$class.execute(CreateSchemaCommand.scala:30)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.execute(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.Runner$class.main(Runner.scala:30)
+	at org.locationtech.geomesa.hbase.tools.HBaseRunner$.main(HBaseRunner.scala:17)
+	at org.locationtech.geomesa.hbase.tools.HBaseRunner.main(HBaseRunner.scala)
+Caused by: java.lang.ClassNotFoundException: org.apache.hadoop.hbase.client.Connection
+	at java.net.URLClassLoader.findClass(URLClassLoader.java:381)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:424)
+	at sun.misc.Launcher$AppClassLoader.loadClass(Launcher.java:349)
+	at java.lang.ClassLoader.loadClass(ClassLoader.java:357)
+	... 14 more
+2020-12-10 20:58:59,268 ERROR [org.locationtech.geomesa.tools.user] Warning: Missing dependency for command execution: org/apache/hadoop/hbase/client/Connection
+2020-12-10 20:58:59,271 ERROR [org.locationtech.geomesa.tools.user] Warning: you have not set HBASE_HOME and/or HADOOP_HOME as environment variables.
+GeoMesa tools will not run without the appropriate HBase and Hadoop jars in the tools classpath.
+Please ensure that those jars are present in the classpath by running 'geomesa-hbase classpath'.
+To take corrective action, please place the necessary jar files in the lib directory of geomesa-tools.
+2020-12-10 21:01:19,092 INFO  [org.locationtech.geomesa.tools.user] Creating 'adm' with spec 'src:String:index=false,group:String:index=false,level:String:index=false,gbid:String:index=true,name:String:index=true,*geometry:MultiPolygon:srid=4326'. Just a few moments...
+2020-12-10 21:01:19,201 WARN  [org.apache.curator.utils.ZKPaths] The version of ZooKeeper being used doesn't support Container nodes. CreateMode.PERSISTENT will be used instead.
+2020-12-10 21:01:20,027 WARN  [org.apache.hadoop.hbase.client.ConnectionImplementation] Table gb.adm does not exist
+2020-12-10 21:01:20,029 WARN  [org.apache.hadoop.hbase.client.ConnectionImplementation] Table gb.adm does not exist
+2020-12-10 21:01:23,009 WARN  [org.apache.hadoop.util.NativeCodeLoader] Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2020-12-10 21:01:24,184 WARN  [org.apache.hadoop.hbase.client.ConnectionImplementation] Table gb.adm_adm_xz2_geometry_v2 does not exist
+2020-12-10 21:01:24,186 WARN  [org.apache.hadoop.hbase.client.ConnectionImplementation] Table gb.adm_adm_xz2_geometry_v2 does not exist
+2020-12-10 21:01:26,566 WARN  [org.apache.hadoop.hbase.client.ConnectionImplementation] Table gb.adm_adm_id_v4 does not exist
+2020-12-10 21:01:26,567 WARN  [org.apache.hadoop.hbase.client.ConnectionImplementation] Table gb.adm_adm_id_v4 does not exist
+2020-12-10 21:01:28,919 WARN  [org.apache.hadoop.hbase.client.ConnectionImplementation] Table gb.adm_adm_attr_gbid_geometry_v8 does not exist
+2020-12-10 21:01:28,920 WARN  [org.apache.hadoop.hbase.client.ConnectionImplementation] Table gb.adm_adm_attr_gbid_geometry_v8 does not exist
+2020-12-10 21:01:31,275 WARN  [org.apache.hadoop.hbase.client.ConnectionImplementation] Table gb.adm_adm_attr_name_geometry_v8 does not exist
+2020-12-10 21:01:31,275 WARN  [org.apache.hadoop.hbase.client.ConnectionImplementation] Table gb.adm_adm_attr_name_geometry_v8 does not exist
+2020-12-10 21:01:33,304 INFO  [org.locationtech.geomesa.tools.user] Created schema 'adm'
+2020-12-10 21:12:45,628 INFO  [org.locationtech.geomesa.tools.user] Creating 'adm' with spec 'src:String:index=false,group:String:index=false,level:String:index=false,gbid:String:index=true,name:String:index=true,*geometry:MultiPolygon:srid=4326'. Just a few moments...
+2020-12-10 21:12:45,741 WARN  [org.apache.curator.utils.ZKPaths] The version of ZooKeeper being used doesn't support Container nodes. CreateMode.PERSISTENT will be used instead.
+2020-12-10 21:12:46,764 WARN  [org.apache.hadoop.util.NativeCodeLoader] Unable to load native-hadoop library for your platform... using builtin-java classes where applicable
+2020-12-10 21:12:46,834 ERROR [org.locationtech.geomesa.tools.user] 
+java.lang.reflect.InvocationTargetException
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.locationtech.geomesa.hbase.utils.HBaseVersions$$anonfun$_createTableAsync$1.apply(HBaseVersions.scala:133)
+	at org.locationtech.geomesa.hbase.utils.HBaseVersions$$anonfun$_createTableAsync$1.apply(HBaseVersions.scala:133)
+	at org.locationtech.geomesa.hbase.utils.HBaseVersions$.createTableAsync(HBaseVersions.scala:62)
+	at org.locationtech.geomesa.hbase.data.HBaseBackedMetadata$$anonfun$createTable$1.apply(HBaseBackedMetadata.scala:31)
+	at org.locationtech.geomesa.hbase.data.HBaseBackedMetadata$$anonfun$createTable$1.apply(HBaseBackedMetadata.scala:29)
+	at org.locationtech.geomesa.utils.io.package$WithClose$.apply(package.scala:64)
+	at org.locationtech.geomesa.hbase.data.HBaseBackedMetadata.createTable(HBaseBackedMetadata.scala:29)
+	at org.locationtech.geomesa.index.metadata.TableBasedMetadata$$anonfun$ensureTableExists$1.apply$mcV$sp(TableBasedMetadata.scala:232)
+	at org.locationtech.geomesa.utils.collection.IsSynchronized.set(MaybeSynchronized.scala:52)
+	at org.locationtech.geomesa.index.metadata.TableBasedMetadata$class.ensureTableExists(TableBasedMetadata.scala:232)
+	at org.locationtech.geomesa.hbase.data.HBaseBackedMetadata.ensureTableExists(HBaseBackedMetadata.scala:21)
+	at org.locationtech.geomesa.index.metadata.TableBasedMetadata$class.insert(TableBasedMetadata.scala:176)
+	at org.locationtech.geomesa.hbase.data.HBaseBackedMetadata.insert(HBaseBackedMetadata.scala:21)
+	at org.locationtech.geomesa.index.geotools.MetadataBackedDataStore.createSchema(MetadataBackedDataStore.scala:145)
+	at org.locationtech.geomesa.index.geotools.MetadataBackedDataStore.createSchema(MetadataBackedDataStore.scala:40)
+	at org.locationtech.geomesa.tools.data.CreateSchemaCommand$class.createSchema(CreateSchemaCommand.scala:40)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.createSchema(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.data.CreateSchemaCommand$$anonfun$execute$2.apply(CreateSchemaCommand.scala:30)
+	at org.locationtech.geomesa.tools.data.CreateSchemaCommand$$anonfun$execute$2.apply(CreateSchemaCommand.scala:30)
+	at org.locationtech.geomesa.tools.DataStoreCommand$class.withDataStore(Command.scala:62)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.withDataStore(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.data.CreateSchemaCommand$class.execute(CreateSchemaCommand.scala:30)
+	at org.locationtech.geomesa.hbase.tools.data.HBaseCreateSchemaCommand.execute(HBaseCreateSchemaCommand.scala:20)
+	at org.locationtech.geomesa.tools.Runner$class.main(Runner.scala:30)
+	at org.locationtech.geomesa.hbase.tools.HBaseRunner$.main(HBaseRunner.scala:17)
+	at org.locationtech.geomesa.hbase.tools.HBaseRunner.main(HBaseRunner.scala)
+Caused by: org.apache.hadoop.hbase.NamespaceNotFoundException: org.apache.hadoop.hbase.NamespaceNotFoundException: gb
+	at org.apache.hadoop.hbase.master.ClusterSchemaServiceImpl.getNamespace(ClusterSchemaServiceImpl.java:119)
+	at org.apache.hadoop.hbase.master.HMaster.createTable(HMaster.java:1975)
+	at org.apache.hadoop.hbase.master.MasterRpcServices.createTable(MasterRpcServices.java:630)
+	at org.apache.hadoop.hbase.shaded.protobuf.generated.MasterProtos$MasterService$2.callBlockingMethod(MasterProtos.java)
+	at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:413)
+	at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:130)
+	at org.apache.hadoop.hbase.ipc.RpcExecutor$Handler.run(RpcExecutor.java:324)
+	at org.apache.hadoop.hbase.ipc.RpcExecutor$Handler.run(RpcExecutor.java:304)
+
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method)
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62)
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45)
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423)
+	at org.apache.hadoop.hbase.ipc.RemoteWithExtrasException.instantiateException(RemoteWithExtrasException.java:100)
+	at org.apache.hadoop.hbase.ipc.RemoteWithExtrasException.unwrapRemoteException(RemoteWithExtrasException.java:90)
+	at org.apache.hadoop.hbase.shaded.protobuf.ProtobufUtil.makeIOExceptionOfException(ProtobufUtil.java:362)
+	at org.apache.hadoop.hbase.shaded.protobuf.ProtobufUtil.handleRemoteException(ProtobufUtil.java:350)
+	at org.apache.hadoop.hbase.client.MasterCallable.call(MasterCallable.java:101)
+	at org.apache.hadoop.hbase.client.RpcRetryingCallerImpl.callWithRetries(RpcRetryingCallerImpl.java:107)
+	at org.apache.hadoop.hbase.client.HBaseAdmin.executeCallable(HBaseAdmin.java:3084)
+	at org.apache.hadoop.hbase.client.HBaseAdmin.executeCallable(HBaseAdmin.java:3076)
+	at org.apache.hadoop.hbase.client.HBaseAdmin.createTableAsync(HBaseAdmin.java:647)
+	... 30 more
+Caused by: org.apache.hadoop.hbase.ipc.RemoteWithExtrasException(org.apache.hadoop.hbase.NamespaceNotFoundException): org.apache.hadoop.hbase.NamespaceNotFoundException: gb
+	at org.apache.hadoop.hbase.master.ClusterSchemaServiceImpl.getNamespace(ClusterSchemaServiceImpl.java:119)
+	at org.apache.hadoop.hbase.master.HMaster.createTable(HMaster.java:1975)
+	at org.apache.hadoop.hbase.master.MasterRpcServices.createTable(MasterRpcServices.java:630)
+	at org.apache.hadoop.hbase.shaded.protobuf.generated.MasterProtos$MasterService$2.callBlockingMethod(MasterProtos.java)
+	at org.apache.hadoop.hbase.ipc.RpcServer.call(RpcServer.java:413)
+	at org.apache.hadoop.hbase.ipc.CallRunner.run(CallRunner.java:130)
+	at org.apache.hadoop.hbase.ipc.RpcExecutor$Handler.run(RpcExecutor.java:324)
+	at org.apache.hadoop.hbase.ipc.RpcExecutor$Handler.run(RpcExecutor.java:304)
+
+	at org.apache.hadoop.hbase.ipc.AbstractRpcClient.onCallFinished(AbstractRpcClient.java:387)
+	at org.apache.hadoop.hbase.ipc.AbstractRpcClient.access$100(AbstractRpcClient.java:95)
+	at org.apache.hadoop.hbase.ipc.AbstractRpcClient$3.run(AbstractRpcClient.java:410)
+	at org.apache.hadoop.hbase.ipc.AbstractRpcClient$3.run(AbstractRpcClient.java:406)
+	at org.apache.hadoop.hbase.ipc.Call.callComplete(Call.java:103)
+	at org.apache.hadoop.hbase.ipc.Call.setException(Call.java:118)
+	at org.apache.hadoop.hbase.ipc.NettyRpcDuplexHandler.readResponse(NettyRpcDuplexHandler.java:162)
+	at org.apache.hadoop.hbase.ipc.NettyRpcDuplexHandler.channelRead(NettyRpcDuplexHandler.java:192)
+	at org.apache.hbase.thirdparty.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at org.apache.hbase.thirdparty.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at org.apache.hbase.thirdparty.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at org.apache.hbase.thirdparty.io.netty.handler.codec.ByteToMessageDecoder.fireChannelRead(ByteToMessageDecoder.java:310)
+	at org.apache.hbase.thirdparty.io.netty.handler.codec.ByteToMessageDecoder.channelRead(ByteToMessageDecoder.java:284)
+	at org.apache.hbase.thirdparty.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at org.apache.hbase.thirdparty.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at org.apache.hbase.thirdparty.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at org.apache.hbase.thirdparty.io.netty.handler.timeout.IdleStateHandler.channelRead(IdleStateHandler.java:286)
+	at org.apache.hbase.thirdparty.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at org.apache.hbase.thirdparty.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at org.apache.hbase.thirdparty.io.netty.channel.AbstractChannelHandlerContext.fireChannelRead(AbstractChannelHandlerContext.java:340)
+	at org.apache.hbase.thirdparty.io.netty.channel.DefaultChannelPipeline$HeadContext.channelRead(DefaultChannelPipeline.java:1359)
+	at org.apache.hbase.thirdparty.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:362)
+	at org.apache.hbase.thirdparty.io.netty.channel.AbstractChannelHandlerContext.invokeChannelRead(AbstractChannelHandlerContext.java:348)
+	at org.apache.hbase.thirdparty.io.netty.channel.DefaultChannelPipeline.fireChannelRead(DefaultChannelPipeline.java:935)
+	at org.apache.hbase.thirdparty.io.netty.channel.nio.AbstractNioByteChannel$NioByteUnsafe.read(AbstractNioByteChannel.java:138)
+	at org.apache.hbase.thirdparty.io.netty.channel.nio.NioEventLoop.processSelectedKey(NioEventLoop.java:645)
+	at org.apache.hbase.thirdparty.io.netty.channel.nio.NioEventLoop.processSelectedKeysOptimized(NioEventLoop.java:580)
+	at org.apache.hbase.thirdparty.io.netty.channel.nio.NioEventLoop.processSelectedKeys(NioEventLoop.java:497)
+	at org.apache.hbase.thirdparty.io.netty.channel.nio.NioEventLoop.run(NioEventLoop.java:459)
+	at org.apache.hbase.thirdparty.io.netty.util.concurrent.SingleThreadEventExecutor$5.run(SingleThreadEventExecutor.java:858)
+	at org.apache.hbase.thirdparty.io.netty.util.concurrent.DefaultThreadFactory$DefaultRunnableDecorator.run(DefaultThreadFactory.java:138)
+	at java.lang.Thread.run(Thread.java:748)
+2020-12-10 21:13:28,627 INFO  [org.locationtech.geomesa.tools.user] Creating 'adm' with spec 'src:String:index=false,group:String:index=false,level:String:index=false,gbid:String:index=true,name:String:index=true,*geometry:MultiPolygon:srid=4326'. Just a few moments...
+2020-12-10 21:13:28,719 ERROR [org.locationtech.geomesa.tools.user] Schema 'adm' already exists in the data store
+2020-12-10 21:13:45,088 INFO  [org.locationtech.geomesa.tools.user] Creating 'adm' with spec 'src:String:index=false,group:String:index=false,level:String:index=false,gbid:String:index=true,name:String:index=true,*geometry:MultiPolygon:srid=4326'. Just a few moments...
+2020-12-10 21:13:45,177 ERROR [org.locationtech.geomesa.tools.user] Schema 'adm' already exists in the data store
