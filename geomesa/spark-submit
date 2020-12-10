@@ -1,0 +1,10 @@
+###
+# Could use Cloudera Artifact repository and the explicit C6 or C7 platform artifacts.
+# Note that the Hbase libraries are stripped from the runtime, and not include in
+#  the Cloudera platform classpath for Spark jobs (as of 9 Dec 2020).
+###
+
+spark-shell \
+  --packages org.apache.hbase:hbase-client:2.1.3 \
+  --jar ./target/geoMesa.jar \
+  --driver-class-path ./target/geoMesa.jar

@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>org.sciclone</groupId>
+    <artifactId>geoMesa</artifactId>
+    <version>1.0</version>
+    <packaging>jar</packaging>
+
+    <properties>
+      <scala.binary.version>2.11</scala.binary.version>
+      <spark.version>2.4.5</spark.version>
+      <hbase.binary.version>2</hbase.binary.version>
+      <hbase.version>2.2.3</hbase.version>
+      <hbase.guava.version>11.0.2</hbase.guava.version>
+      <geomesa.version>3.1.0</geomesa.version>
+
+      <maven.compiler.source>1.8</maven.compiler.source>
+      <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencyManagement>
+      <dependencies>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-compiler</artifactId>
+            <version>2.11.7</version>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>1.7.25</version>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>1.2.17</version>
+        </dependency>
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2-core_${scala.binary.version}</artifactId>
+            <version>4.9.2</version>
+        </dependency>
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2-junit_${scala.binary.version}</artifactId>
+            <version>4.9.2</version>
+        </dependency>
+      </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+      <!--<dependency>
+        <groupId>org.locationtech.geomesa</groupId>
+        <artifactId>geomesa-hbase-spark-runtime-hbase2_2.11</artifactId>
+        <version>${geomesa.version}</version>
+      </dependency>-->
+
+      <dependency>
+            <groupId>org.locationtech.geomesa</groupId>
+            <artifactId>geomesa-hbase-datastore_${scala.binary.version}</artifactId>
+            <version>${geomesa.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.locationtech.geomesa</groupId>
+            <artifactId>geomesa-hbase-spark_${scala.binary.version}</artifactId>
+            <version>${geomesa.version}</version>
+        </dependency>
+
+        <!-- explicitly mark provided so its not in the shaded jar -->
+        <dependency>
+            <groupId>org.scala-lang</groupId>
+            <artifactId>scala-compiler</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--Mark dependency as provided to avoid Spark 2.2.x conflicts-->
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-client</artifactId>
+            <version>${hbase.version}</version>
+            <!--scope>provided</scope-->
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-common</artifactId>
+            <version>${hbase.version}</version>
+            <!--scope>provided</scope-->
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-protocol</artifactId>
+            <version>${hbase.version}</version>
+            <!--scope>provided</scope-->
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-mapreduce</artifactId>
+            <version>${hbase.version}</version>
+            <!--scope>provided</scope-->
+        </dependency>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${hbase.guava.version}</version>
+            <!--scope>provided</scope-->
+        </dependency>
+
+        <!-- only needed for packaging into the shaded jar -->
+        <dependency>
+            <groupId>org.locationtech.geomesa</groupId>
+            <artifactId>geomesa-spark-sql_${scala.binary.version}</artifactId>
+            <version>${geomesa.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.locationtech.geomesa</groupId>
+            <artifactId>geomesa-tools_${scala.binary.version}</artifactId>
+            <version>${geomesa.version}</version>
+            <scope>runtime</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.locationtech.geomesa</groupId>
+            <artifactId>geomesa-cqengine-datastore_${scala.binary.version}</artifactId>
+            <version>${geomesa.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-core_${scala.binary.version}</artifactId>
+            <version>${spark.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.spark</groupId>
+            <artifactId>spark-sql_${scala.binary.version}</artifactId>
+            <version>${spark.version}</version>
+            <scope>provided</scope>
+        </dependency>
+
+
+        <!-- test dependencies -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2-core_${scala.binary.version}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.specs2</groupId>
+            <artifactId>specs2-junit_${scala.binary.version}</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.locationtech.geomesa</groupId>
+            <artifactId>geomesa-spark-sql_${scala.binary.version}</artifactId>
+            <classifier>tests</classifier>
+            <version>${geomesa.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.hbase</groupId>
+            <artifactId>hbase-testing-util</artifactId>
+            <version>${hbase.version}</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <pluginManagement>
+          <plugins>
+            <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <!-- 3.8.0 was released 2018-07-26. -->
+                    <version>3.8.0</version>
+                    <configuration>
+                        <!-- Turn off 'useIncrementalCompilation' to keep this plugin
+                             from recompiling Java files that the scala-maven-plugin
+                             already compiled.  The scala-maven-plugin generates .class
+                             files from Java sources when its 'incremental' option is
+                             turned on (as it is in the 'zinc' profile).  In this case,
+                             maven-compiler-plugin 3.0 to current (3.8.0) erroneously
+                             detects changes and re-compiles the Java files unless this
+                             option is turned off.  -->
+                        <useIncrementalCompilation>false</useIncrementalCompilation>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                    </configuration>
+                </plugin>
+            <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-assembly-plugin</artifactId>
+                    <!-- 3.3.0 was released 2020-04-27. -->
+                    <version>3.3.0</version>
+                    <configuration>
+                      <tarLongFileMode>posix</tarLongFileMode>
+                    </configuration>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-shade-plugin</artifactId>
+                    <!-- 3.2.1 was released 2018-11-12. -->
+                    <version>3.2.4</version>
+                </plugin>
+                <plugin>
+                    <groupId>net.alchim31.maven</groupId>
+                    <artifactId>scala-maven-plugin</artifactId>
+                    <!-- 3.4.4 was released 2018-11-01.  It requires Maven version >= 3.3.9. -->
+                    <version>3.4.4</version>
+                    <configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>org.scala-lang</groupId>
+                                <artifactId>scala-reflect</artifactId>
+                                <version>${scala.version}</version>
+                            </dependency>
+                        </dependencies>
+                        <jvmArgs>
+                            <jvmArg>-Xms1024m</jvmArg>
+                            <jvmArg>-Xmx8G</jvmArg>
+                            <jvmArg>-Duser.timezone=UTC</jvmArg>
+                            <jvmArg>-Djava.awt.headless=true</jvmArg>
+                        </jvmArgs>
+                        <args>
+                            <arg>-nowarn</arg>
+                            <arg>-unchecked</arg>
+                            <arg>-deprecation</arg>
+                        </args>
+                        <source>1.8</source>
+                        <target>1.8</target>
+                        <scalaVersion>${scala.version}</scalaVersion>
+                    </configuration>
+                  </plugin>
+          </plugins>
+        </pluginManagement>
+        <plugins>
+            <plugin>
+              <groupId>net.alchim31.maven</groupId>
+              <artifactId>scala-maven-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-shade-plugin</artifactId>
+                <executions>
+                    <execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <minimizeJar>false</minimizeJar>
+                            <shadedArtifactAttached>false</shadedArtifactAttached>
+                            <artifactSet>
+                                <excludes>
+                                    <exclude>org.locationtech.geomesa:geomesa-*-runtime*</exclude>
+                                    <exclude>io.netty:*</exclude>
+                                    <exclude>org.slf4j:*</exclude>
+                                    <exclude>org.geotools:gt-render:*</exclude>
+                                    <exclude>org.geotools:gt-coverage:*</exclude>
+                                    <exclude>it.geosolutions.jaiext.*</exclude>
+                                    <exclude>com.esotericsoftware.kryo:*</exclude>
+                                    <exclude>org.ow2.asm:*</exclude>
+                                    <exclude>org.scala-lang:*</exclude>
+                                    <exclude>io.netty:*</exclude>
+
+                                    <exclude>commons-*</exclude>
+                                    <exclude>com.fasterxml.jackson.core:*</exclude>
+                                    <exclude>com.fasterxml.jackson.module:*</exclude>
+                                    <exclude>log4j:*</exclude>
+                                    <exclude>org.codehaus.jackson:*</exclude>
+                                    <exclude>org.glassfish.jersey.*</exclude>
+                                    <exclude>org.scala-lang.modules:*</exclude>
+
+                                    <exclude>org.apache.arrow:*</exclude>
+                                    <exclude>org.apache.avro:*</exclude>
+                                    <!--exclude>org.apache.commons:*</exclude-->
+                                    <exclude>org.apache.curator:*</exclude>
+                                    <exclude>org.apache.hadoop:*</exclude>
+                                    <!--exclude>org.apache.hbase:*</exclude-->
+                                    <!--exclude>org.apache.hbase.thirdparty:*</exclude-->
+                                    <exclude>org.apache.htrace:*</exclude>
+                                    <exclude>org.apache.parquet:*</exclude>
+                                    <exclude>org.apache.orc:*</exclude>
+                                    <exclude>org.apache.spark:*</exclude>
+                                    <exclude>org.apache.zookeeper:*</exclude>
+                                </excludes>
+                            </artifactSet>
+                            <createDependencyReducedPom>false</createDependencyReducedPom>
+                            <filters>
+                                <filter>
+                                    <artifact>*:*</artifact>
+                                    <excludes>
+                                        <exclude>META-INF/*.SF</exclude>
+                                        <exclude>META-INF/*.DSA</exclude>
+                                        <exclude>META-INF/*.RSA</exclude>
+                                        <exclude>org/objectweb/asm/**</exclude>
+                                    </excludes>
+                                </filter>
+                            </filters>
+                            <relocations>
+                                <relocation>
+                                    <pattern>com.google.common</pattern>
+                                    <shadedPattern>org.locationtech.geomesa.shaded.com.google.common</shadedPattern>
+                                </relocation>
+                                <!--relocation>
+                                    <pattern>org.apache.commons.codec</pattern>
+                                    <shadedPattern>org.locationtech.geomesa.shaded.org.apache.commons.codec</shadedPattern>
+                                </relocation-->
+                                <!-- spark also includes shapeless, relocate to avoid version conflicts -->
+                                <relocation>
+                                    <pattern>shapeless</pattern>
+                                    <shadedPattern>org.locationtech.geomesa.shaded.shapeless</shadedPattern>
+                                </relocation>
+                                <!-- Databricks uses an old version of scalalogging, include it to allow us to run on databricks clusters -->
+                                <!--<relocation>
+                                    <pattern>com.typesafe.scalalogging</pattern>
+                                    <shadedPattern>org.locationtech.geomesa.shaded.com.typesafe.scalalogging</shadedPattern>
+                                </relocation>-->
+                                <!-- spark needs json4s to use the jsonpath function -->
+                                <relocation>
+                                    <pattern>org.json4s</pattern>
+                                    <shadedPattern>org.locationtech.geomesa.shaded.org.json4s</shadedPattern>
+                                </relocation>
+                                <!-- Databricks uses an old version of scalalogging, include it to allow us to run on databricks clusters -->
+                                <!--<relocation>
+                                    <pattern>com.typesafe.scalalogging</pattern>
+                                    <shadedPattern>org.locationtech.geomesa.shaded.com.typesafe.scalalogging</shadedPattern>
+                                </relocation>-->
+                            </relocations>
+                            <transformers>
+                                <transformer implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer" />
+                            </transformers>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+        </plugins>
+    </build>
+</project>
