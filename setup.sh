@@ -75,4 +75,11 @@ pyspark \
 --jars ${wd}/geomesa/target/geoMesa-1.0.jar,/opt/cloudera/parcels/CDH-6.2.0-1.cdh6.2.0.p0.967373/jars/httpclient-4.5.3.jar,/opt/cloudera/parcels/CDH-6.2.0-1.cdh6.2.0.p0.967373/jars/commons-httpclient-3.1.jar
 EOF
 
+
+cd /home/dsmillerrunfol@campus.wm.edu/geoMesa_gB_Import/geomesa-hbase_2.11-3.1.0/
+touch ./conf/reference.conf
+cat << EOF >> ./conf/reference.conf
+include "sfts/geoquery/geoboundaries.conf"
+EOF
+
 #pip3 install geomesa_pyspark-3.1.0.tar.gz
