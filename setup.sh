@@ -57,7 +57,7 @@ cd ${wd}
 
 touch ~/geoMesa_gB_Import/spark-submit.sh
 cat << EOF > ~/geoMesa_gB_Import/spark-submit.sh
-pyspark \
+spark-submit \
 --driver-memory=50g \
 --conf spark.rpc.message.maxSize=2047 \
 --conf spark.kryo.registrationRequired=false \
@@ -70,9 +70,10 @@ pyspark \
 --conf spark.executor.extraClassPath="/etc/hbase/conf" \
 --conf spark.driver.extraClassPath="/etc/hbase/conf" \
 --conf spark.pyspark.driver.python=/home/dsmillerrunfol@campus.wm.edu/anaconda3/envs/gB/bin/python \
---conf spark.pyspark.python=./ENV/gB/bin/python \
---archives ${wd}/gB.zip#ENV,/opt/cloudera/parcels/CDH-6.2.0-1.cdh6.2.0.p0.967373/lib/spark/python/lib/py4j-0.10.7-src.zip \
+--conf spark.pyspark.python=/home/dsmillerrunfol@campus.wm.edu/anaconda3/envs/gB/bin/python \
+--archives ${wd}/gB.zip#ENV \
 --jars ${wd}/geomesa/target/geoMesa-1.0.jar,/opt/cloudera/parcels/CDH-6.2.0-1.cdh6.2.0.p0.967373/jars/httpclient-4.5.3.jar,/opt/cloudera/parcels/CDH-6.2.0-1.cdh6.2.0.p0.967373/jars/commons-httpclient-3.1.jar
+main.py
 EOF
 
 cd /home/dsmillerrunfol@campus.wm.edu/geoMesa_gB_Import/geomesa-hbase_2.11-3.1.0
