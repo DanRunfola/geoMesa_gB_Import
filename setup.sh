@@ -17,23 +17,11 @@ cat << EOF > ~/geoMesa_gB_Import/conda_env.yml
 name: ${env}
 channels:
   - conda-forge
-  - defaults
+  - main
 dependencies:
   - python=3
   - ipython==6.2.1
-  - gdal==2.4.4
-  - numpy>=1.17.3,<2.0
-  - pandas>=0.25.3,<1.0
   - shapely>=1.6.4,<1.7
-  - rasterio>=1.1.1,<1.2
-  - folium>=0.10.1,<0.11
-  - geopandas>=0.6.2,<0.7
-  - descartes>=1.1.0,<1.2
-  - pytz
-  - matplotlib
-  - rtree
-  - Pillow
-  - deprecation
 EOF
 
 cd ..
@@ -43,7 +31,7 @@ bash Anaconda3-2018.12-Linux-x86_64.sh
 conda clean --all
 
 conda config --add channels main
-conda config --set channel_priority no
+conda config --set channel_priority yes
 conda env create --name gB --file conda_env.yml
 echo ". /home/dsmillerrunfol@campus.wm.edu/anaconda3/etc/profile.d/conda.sh" >> ~/.bashrc
 source activate gB
@@ -69,10 +57,11 @@ spark-submit \
 --conf spark.driver.extraJavaOptions='-Dlog4j.configuration=file:log4j.properties' \
 --conf spark.executor.extraClassPath="/etc/hbase/conf" \
 --conf spark.driver.extraClassPath="/etc/hbase/conf" \
+--conf hbase.client.keyvalue.maxsize=500000000 \
 --conf spark.pyspark.driver.python=/home/dsmillerrunfol@campus.wm.edu/anaconda3/envs/gB/bin/python \
 --conf spark.pyspark.python=/home/dsmillerrunfol@campus.wm.edu/anaconda3/envs/gB/bin/python \
---archives ${wd}/gB.zip#ENV \
---jars ${wd}/geomesa/target/geoMesa-1.0.jar,/opt/cloudera/parcels/CDH-6.2.0-1.cdh6.2.0.p0.967373/jars/httpclient-4.5.3.jar,/opt/cloudera/parcels/CDH-6.2.0-1.cdh6.2.0.p0.967373/jars/commons-httpclient-3.1.jar
+--archives ${wd}/gB.zip#gB \
+--jars ${wd}/geomesa/target/geoMesa-1.0.jar,/opt/cloudera/parcels/CDH-6.2.0-1.cdh6.2.0.p0.967373/jars/httpclient-4.5.3.jar,/opt/cloudera/parcels/CDH-6.2.0-1.cdh6.2.0.p0.967373/jars/commons-httpclient-3.1.jar \
 main.py
 EOF
 
@@ -81,6 +70,9 @@ cd /home/dsmillerrunfol@campus.wm.edu/geoMesa_gB_Import/geomesa-hbase_2.11-3.1.0
 cp /etc/hbase/conf/hbase-site.xml conf/
 
 sed -i 's|</configuration>|<property><name>hbase.geomesa.principal</name><value>dsmillerrunfol@CAMPUS.WM.EDU</value></property><property><name>hbase.geomesa.keytab</name><value>~/.kerberos/dsmillerrunfol.keytab</value></property></configuration>|g' ./conf/hbase-site.xml
+
+
+sed -i 's|<value>10485760</value>|<value>0</value>|g' ./conf/hbase-site.xml
 
 export HADOOP_HOME=/opt/cloudera/parcels/CDH/lib/hadoop
 export HADOOP_CONF_DIR=/etc/hadoop/conf

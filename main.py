@@ -23,9 +23,9 @@ params = {
 conf = geomesa_pyspark.configure(
          jars=['/home/dsmillerrunfol@campus.wm.edu/geoMesa_gB_Import/geomesa/target/geoMesa-1.0.jar'],
          packages=['geomesa_pyspark','pytz'],
-         spark_home='/opt/cloudera/parcels/CDH-6.2.0-1.cdh6.2.0.p0.967373/lib/spark').\
-       setAppName('gbIngest' + gbVersion + gbTyp)
+         spark_home='/opt/cloudera/parcels/CDH-6.2.0-1.cdh6.2.0.p0.967373/lib/spark').setAppName('gbIngest' + gbVersion + gbTyp)
 conf.get('spark.master')
+conf.set("hbase.client.keyvalue.maxsize","500000000")
 
 from pyspark.sql import SparkSession
 spark = ( SparkSession
